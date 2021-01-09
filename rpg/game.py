@@ -15,9 +15,9 @@ def showInstructions():
 RPG Game
 ========
 Commands:
-  go [direction]
-  get [item]
-  use [item]
+  go [north,south,east,west]
+  get [item in room]
+  use [item in inventory]
   help - brings up this menu again at any time
   q - quit at any time
 ''')
