@@ -110,7 +110,7 @@ def gameLoop():
         if move[0] == 'go':
             try:
                 # check that they are allowed wherever they want to go
-                if move[1] in rooms[currentRoom] and not 'creature':
+                if move[1] in rooms[currentRoom] and move[1] != 'creature':
                     # set the current room to the new room
                     currentRoom = rooms[currentRoom][move[1]]
                 # there is no door (link) to the new room
