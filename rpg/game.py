@@ -108,41 +108,50 @@ def gameLoop():
 
         # if they type 'go' first
         if move[0] == 'go':
-            # check that they are allowed wherever they want to go
-            if move[1] in rooms[currentRoom]:
-                # set the current room to the new room
-                currentRoom = rooms[currentRoom][move[1]]
-            # there is no door (link) to the new room
-            else:
-                print('You can\'t go that way!')
+            try:
+                # check that they are allowed wherever they want to go
+                if move[1] in rooms[currentRoom] and not 'creature':
+                    # set the current room to the new room
+                    currentRoom = rooms[currentRoom][move[1]]
+                # there is no door (link) to the new room
+                else:
+                    print('You can\'t go that way!')
+            except IndexError:
+                print("Go where? ")
 
         # if they type 'get' first
         if move[0] == 'get':
-            # if the room contains an item, and the item is the one they want to get
-            if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
-                # add the item to their inventory
-                inventory += [move[1]]
-                # display a helpful message
-                print(move[1] + ' got!')
-                # delete the item from the room
-                del rooms[currentRoom]['item']
-            # otherwise, if the item isn't there to get
-            else:
-                # tell them they can't get it
-                print('Can\'t get ' + move[1] + '!')
+            try:
+                # if the room contains an item, and the item is the one they want to get
+                if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
+                    # add the item to their inventory
+                    inventory += [move[1]]
+                    # display a helpful message
+                    print(move[1] + ' got!')
+                    # delete the item from the room
+                    del rooms[currentRoom]['item']
+                # otherwise, if the item isn't there to get
+                else:
+                    # tell them they can't get it
+                    print('Can\'t get ' + move[1] + '!')
+            except IndexError:
+                print("Get what? ")
 
         # if they type 'use' first
         if move[0] == 'use':
-            # check inventory for item
-            if move[1] in inventory and move[1] == 'potion':
-                print("You use the potion and become enraged. The potion crumbles to dust.")
-                status_effects.append('Enraged')
-                inventory.remove(move[1])
-            elif move[1] in inventory:
-                print(f'You use the {move[1]} and it crumbles to dust.')
-                inventory.remove(move[1])
-            else:
-                print("You don't have anything that sounds like that to use.")
+            try:
+                # check inventory for item
+                if move[1] in inventory and move[1] == 'potion':
+                    print("You use the potion and become enraged. The potion crumbles to dust.")
+                    status_effects.append('Enraged')
+                    inventory.remove(move[1])
+                elif move[1] in inventory:
+                    print(f'You use the {move[1]} and it crumbles to dust.')
+                    inventory.remove(move[1])
+                else:
+                    print("You don't have anything that sounds like that to use.")
+            except IndexError:
+                print("Use what? ")
 
         ## Define non violent way a player can win
         if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
