@@ -10,7 +10,7 @@ AOIF_CHAR = "https://www.anapioficeandfire.com/api/characters/"
 
 def main():
         ## Ask user for input
-        got_charToLookup = input("Pick a number between 1 and 2138 to return info on a GoT character! " )
+        got_charToLookup = input(f"Pick a number between 1 and 2138 to return info on a GoT character! " )
 
         ## Send HTTPS GET to the API of ICE and Fire character resource
         gotresp = requests.get(AOIF_CHAR + got_charToLookup)
