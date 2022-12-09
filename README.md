@@ -1,6 +1,6 @@
 # mycode (Project Title)
 
-Repo for python with API's course - this is the only readme edit
+Repo for python with API's course
 
 ## Getting Started
 
@@ -19,4 +19,4 @@ how to install python and python3 using apt.
 
 ## Authors
 
-* **Kelson Smith** - *Initial work* - [YourWebsite](https://example.com/)
+* **Kelson Smith** - *Initial work*
